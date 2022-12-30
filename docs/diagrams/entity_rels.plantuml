@@ -1,0 +1,166 @@
+@startuml
+
+entity Trainee {
+*id
+name
+email
+password
+date_of_birth
+}
+
+entity Teacher {
+*id
+name
+email
+password
+date_of_birth
+}
+
+entity Account {
+*id
+username
+password
+role
+}
+
+entity Course {
+*id
+title
+description
+start_date
+end_date
+teacher_id
+}
+
+entity Class {
+*id
+course_id
+start_time
+end_time
+location
+}
+
+entity Homework {
+*id
+course_id
+title
+description
+due_date
+}
+
+entity Notification {
+*id
+sender
+receiver
+message
+date_sent
+}
+
+entity News {
+*id
+title
+description
+date_published
+}
+
+entity PaymentOption {
+*id
+name
+description
+}
+
+entity OnlineSupport {
+*id
+name
+email
+message
+date_submitted
+}
+
+entity CourseEvaluation {
+*id
+course_id
+trainee_id
+rating
+comments
+date_submitted
+}
+
+entity LearningContent {
+*id
+course_id
+title
+description
+file
+}
+
+entity Gradebook {
+*id
+course_id
+trainee_id
+homework_id
+grade
+}
+
+entity Schedule {
+*id
+course_id
+class_id
+trainee_id
+}
+
+entity UserComments {
+*id
+course_id
+trainee_id
+comments
+rating
+date_submitted
+}
+
+entity TraineeRequests {
+*id
+course_id
+trainee_id
+message
+date_submitted
+}
+
+entity Lecture {
+*id
+course_id
+title
+description
+file
+}
+
+Trainee --|{ Course
+Trainee --|{ Class
+Trainee --|{ Homework
+Trainee --|{ CourseEvaluation
+Trainee --|{ UserComments
+Trainee --|{ TraineeRequests
+Teacher --|{ Course
+Teacher --|{ Class
+Teacher --|{ Homework
+Teacher --|{ LearningContent
+Teacher --|{ Gradebook
+Teacher --|{ Lecture
+Account --|{ Trainee
+Account --|{ Teacher
+Course --|{ Class
+Course --|{ Homework
+Course --|{ CourseEvaluation
+Course --|{ LearningContent
+Course --|{ Gradebook
+Course --|{ Schedule
+Class --|{ Homework
+Class --|{ Gradebook
+Class --|{ Schedule
+Trainee --|{ Schedule
+Homework --|{ Gradebook
+News --|{ Account
+PaymentOption --|{ Account
+OnlineSupport --|{ Account
+
+@enduml

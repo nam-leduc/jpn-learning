@@ -1,0 +1,68 @@
+@startuml
+
+skin rose
+
+left to right direction
+
+actor "Học Viên" as hv
+actor "Giáo Viên" as gv
+actor "Quản Trị Viên" as Admin
+
+package "Japanese Learning App" {
+    usecase "Đăng Ký Tài Khoản" as UCRegister
+    usecase "Đăng Ký Là Học Viên" as UCRegisterTrainee
+    usecase "Đăng Ký Là Giáo Viên" as UCRegisterTeacher
+    usecase "Đăng Nhập" as UCDangNhap
+
+    usecase UC16 as "
+        Quản Lý
+
+        --
+        ..extension points..
+        Chọn quản lý thông tin người dùng
+        Chọn quản lý nội dung bài giảng
+        Chọn quản lý bài tập
+        Chọn quản lý khóa học
+        Chọn quản lý buổi học
+        Chọn quản lý thông báo
+        Chọn quản lý tin tức
+        Chọn quản lý tùy chọn thanh toán
+        Chọn quản lý hỗ trợ trực tuyến
+        Chọn quản lý đánh giá khóa học
+        Chọn quản lý nội dung học tập
+        Chọn quản lý bảng điểm
+        Chọn quản lý lịch học
+        Chọn quản lý bình luận và đánh giá của người dùng về khóa học
+        Chọn quản lý yêu cầu học viên về khóa học hoặc giảng viên
+        Quản lý việc gửi thông báo tới người dùng về các sự kiện hoặc thông báo khác
+        Quản lý việc giảng viên ghi âm và tải lên bài giảng
+        Quản lý việc học viên tải và làm bài tập
+    "
+
+    note right of UC16
+        Quản lý đánh giá khóa học: Cho phép học viên và giáo viên đánh giá
+            khóa học sau khi hoàn thành khóa học.
+        Quản lý nội dung học tập: Cho phép giáo viên cập nhật nội dung
+            học tập của khóa học, bao gồm cả bài giảng, bài tập, và các
+            tài liệu tham khảo khác.
+        Quản lý bảng điểm: Cho phép giáo viên cập nhật bảng điểm của
+            học viên, bao gồm cả điểm từ bài tập và điểm từ bài kiểm tra.
+        Quản lý lịch học: Cho phép giáo viên cập nhật lịch học của khóa
+            học, bao gồm thời gian và địa điểm học tập.
+        Quản lý yêu cầu hỗ trợ: Cho phép học viên gửi yêu cầu hỗ trợ tới
+            giáo viên hoặc ban quản trị.
+        Quản lý quảng cáo: Cho phép ban quản trị cập nhật các quảng cáo để
+            hiển thị trên hệ thống.
+    end note
+}
+
+UCRegisterTrainee --|> UCRegister
+UCRegisterTeacher --|> UCRegister
+
+hv --> UCRegisterTrainee
+gv --> UCRegisterTeacher
+hv --> UCDangNhap
+gv --> UCDangNhap
+Admin --> UC16
+
+@enduml
